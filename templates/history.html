@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>История поиска</title>
+</head>
+<body>
+    <h1>История поиска</h1>
+    <ul>
+        {% for entry in history %}
+            <li>{{ entry.city }} - {{ entry.count }} раз(а)</li>
+        {% empty %}
+            <li>Нет записей в истории</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+{% endblock %}

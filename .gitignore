@@ -1,0 +1,48 @@
+# Django related
+*.log
+*.pot
+*.pyc
+__pycache__/
+local_settings.py
+db.sqlite3
+
+# Media files (uploads)
+media/
+
+# Static files (usually collected)
+staticfiles/
+
+# Environment variables
+.env
+
+# IDEs
+.vscode/
+*.code-workspace
+
+# macOS
+.DS_Store
+
+# Editors
+*~
+*.swp
+
+# Python bytecode
+*.pyc
+
+# Pipenv
+Pipfile.lock
+
+# Ignore environment-specific files
+/.idea
+/.vs
+*.iml
+*.ipynb_checkpoints
+*.idea
+
+# Ignore Docker specific files
+.dockerignore
+Dockerfile
+
+# Ignore backup files
+*~
+*.bak

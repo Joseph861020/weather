@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <!DOCTYPE html>
+    <html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Приложение Погода</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
+    </head>
+    <body>
+    <header>
+        <h1>Добро пожаловать в Приложение Погода</h1>
+    </header>
+
+    <main>
+        <section class="weather-form">
+            <form method="post">
+                {% csrf_token %}
+                <label for="city">Город:</label>
+                <input type="text" id="city" name="city" required>
+                <button type="submit">Узнать погоду</button>
+            </form>
+        </section>
+
+        <section class="weather-info">
+            {% if weather_data %}
+                <h2>Погода в {{ city }}</h2>
+                {% for hour_data in weather_data %}
+                    <div>
+                        <h3>Время: {{ hour_data.hour }}:00</h3>
+                        <p>Температура: {{ hour_data.temp }}°C</p>
+                        <p>Состояние: {{ hour_data.condition }}</p>
+                        <p>Влажность воздуха: {{ hour_data.humidity }}%</p>
+                        <p>Скорость ветра: {{ hour_data.wind_speed }} m/s</p>
+                        <p>Направление ветра: {{ hour_data.wind_dir }}</p>
+                    </div>
+                {% endfor %}
+            {% elif error_message %}
+                <p>{{ error_message }}</p>
+            {% endif %}
+        </section>
+
+        <section class="search-history">
+            {% if search_history %}
+                <h3>История поиска</h3>
+                <ul>
+                    {% for item in search_history %}
+                        <li><a href="{% url 'weather_view' %}?city={{ item.city }}">{{ item.city }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </section>
+    </main>
+
+    <footer>
+
+    </footer>
+
+    <script>
+        $(document).ready(function () {
+            $('#city').autocomplete({
+                source: '{% url "autocomplete_city" %}',
+                minLength: 2
+            });
+        });
+    </script>
+    </body>
+    </html>
+{% endblock %}

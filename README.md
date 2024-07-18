@@ -27,7 +27,6 @@
     DEBUG=True
     YANDEX_WEATHER_API_KEY=YOUR_YANDEX_WEATHER_API_KEY
     DATABASE_URL=postgres://user:password@db:5432/weatherapp
-    WEATHER_API_KEY=your_weather_api_key
     ```
 
 4. Соберите и запустите контейнеры Docker:

@@ -25,7 +25,7 @@
 3. Создайте файл `.env` и добавьте необходимые переменные окружения:
     ```env
     DEBUG=True
-    SECRET_KEY=your_secret_key
+    YANDEX_WEATHER_API_KEY=YOUR_YANDEX_WEATHER_API_KEY
     DATABASE_URL=postgres://user:password@db:5432/weatherapp
     WEATHER_API_KEY=your_weather_api_key
     ```

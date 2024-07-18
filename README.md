@@ -133,4 +133,3 @@ docker-compose exec web python manage.py test
     - **Лицензия**: MIT License.
 
 Этот README предоставляет полную информацию для начала работы с приложением и его установки.
-
